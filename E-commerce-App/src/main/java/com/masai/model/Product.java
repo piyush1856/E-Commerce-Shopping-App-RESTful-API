@@ -32,6 +32,8 @@ public class Product extends Category{
 	private String manufacturer;
 	private Integer quantity;
 	
+	private String imgURL;
+	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Cart> cart;
