@@ -4,11 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.masai.model.Admin;
-
+import com.masai.model.CurrentUserSession;
 
 @Repository
-public interface AdminRepo extends JpaRepository<Admin, Integer>{
-	
-	public Admin findByAdminEmail(String adminEmail);
+public interface UserSessionDao extends JpaRepository<Admin, Integer>{
+    public CurrentUserSession findByUnqID(String unqID);
 
 }

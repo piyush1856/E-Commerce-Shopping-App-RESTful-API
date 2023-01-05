@@ -1,36 +1,36 @@
 package com.masai.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
 public class Cart {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cartId;
-	
-	
-	@OneToOne(cascade = CascadeType.ALL)
-    private Customer customer;
-	
-	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Product> products;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer cartId;
+    private Integer product_quantity;
+
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
 
 }

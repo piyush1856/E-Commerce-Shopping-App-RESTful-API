@@ -1,11 +1,7 @@
 package com.masai.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -20,25 +16,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Admin {
+public class AdminDTO {
 	
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer adminID;
-
-    @NotNull
-    private String adminName;
-
+    @Size(min = 5,message = "User should be admin")
+    private String userType = "Admin";
     @Size(min=4,max=12,message = "Password should has minimum 4 to 12 characters")
     private String password;
-
-    @NotNull
-    private String address;
-
-    @Size(min=10, message ="Mobile Number should be of 10 digits!")
-    private String mobileNumber;
-
-    @Email
-    private String email;
 
 }

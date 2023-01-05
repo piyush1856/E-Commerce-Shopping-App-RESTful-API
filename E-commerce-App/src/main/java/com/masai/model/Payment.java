@@ -2,37 +2,28 @@ package com.masai.model;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.masai.enums.PaymentTypeEnum;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import com.masai.enums.PaymentType;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Payment {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer paymentId;
-	
+	private int paymentId;
 	@Enumerated(EnumType.STRING)
-	private PaymentTypeEnum paymentType;
-	private LocalDateTime paymentTime;
-	private Double paymentAmount;
-	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	private Orders order;
+	private PaymentType paymentType;
+	private int amount;
+	private LocalDateTime dateAndTime;
+
 }

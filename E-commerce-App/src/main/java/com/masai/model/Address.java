@@ -5,17 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 	
-	private String streetNo;
-	private String buildingNo;
+	private int pinCode;
+	private int streetNo;
 	private String city;
 	private String state;
 	private String country;
-	private String pincode;
-	
-	
 
 }

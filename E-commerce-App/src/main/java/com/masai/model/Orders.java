@@ -1,57 +1,57 @@
 package com.masai.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.masai.enums.OrderStatusEnum;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.masai.enums.OrderStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
 @Data
-@NoArgsConstructor
+@Entity
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Orders {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer orderId;
-	private LocalDateTime orderDate;
-	
-	@Enumerated(EnumType.STRING)
-	private OrderStatusEnum orderStatus;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Customer customer;
-	
-	@Embedded
-	private Address address;
-	
-	
-	
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
-	private Payment payment;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer orderId;
+    private LocalDateTime date;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+    
+    @Embedded
+    private Payment payment;
+    
+    @Embedded
+    private Address address;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User user;
+    
+    @JsonIgnore
+    @Embedded
+    @ElementCollection
+    private List<Product> productList = new ArrayList<>();
+
 }
