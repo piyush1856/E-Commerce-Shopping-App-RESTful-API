@@ -63,5 +63,6 @@ public interface AdminServices {
     public Product highestSoldProductBySalePrice(Integer price1, Integer price2) throws ProductException;
     
     public Product highestSoldProductByCategory(Category category) throws ProductException;
-
+    
+    
 }

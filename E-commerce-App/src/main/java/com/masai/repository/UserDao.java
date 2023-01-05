@@ -11,7 +11,7 @@ import com.masai.model.Orders;
 import com.masai.model.User;
 
 @Repository
-public interface UserDao extends JpaRepository<Admin, Integer>{
+public interface UserDao extends JpaRepository<User, Integer>{
 	
     @Query("select c.orders from User c where c.userID=?1")
     public List<Orders> getAllOrderByCid(Integer userID);

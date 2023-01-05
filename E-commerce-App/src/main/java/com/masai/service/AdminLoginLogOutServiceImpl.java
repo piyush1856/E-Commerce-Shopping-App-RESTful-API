@@ -16,8 +16,7 @@ import com.masai.repository.AdminSessionDao;
 import net.bytebuddy.utility.RandomString;
 
 @Service
-public class AdminLoginLogOutServiceImpl implements AdminLoginLogOutService{
-	
+public class AdminLoginLogOutServiceImpl implements AdminLoginLogOutService {
 
     @Autowired
     private AdminDao adminDao;
@@ -57,5 +56,4 @@ public class AdminLoginLogOutServiceImpl implements AdminLoginLogOutService{
         adminSessionDao.delete(currentAdminSession);
         return "Logged Out !";
     }
-
 }

@@ -4,8 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.masai.model.Admin;
+import com.masai.model.Product;
 
 @Repository
-public interface ProductDao extends JpaRepository<Admin, Integer>{
+public interface ProductDao extends JpaRepository<Product, Integer>{
 
 }
